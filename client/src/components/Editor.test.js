@@ -12,7 +12,7 @@ describe("<Editor />", () => {
     ReactDOM.render(<Editor />, div);
   });
 
-  it('renders a <textarea></textarea>', () => {
+  it('renders a textarea', () => {
     const editor = shallow(
       <Editor />
     );

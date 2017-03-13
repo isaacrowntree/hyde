@@ -5,23 +5,27 @@
   "dependencies": {
     "babel-cli": "6.14.0",
     "babel-core": "6.14.0",
-    "express": "x.x",
-    "body-parser": "x.x",
-    "fs": "x.x"
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security"
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "babel-node server.js",
+    "server": "babel-node app/server.js",
     "client": "babel-node start-client.js",
     "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "concurrently": "3.1.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
-    "eslint-plugin-react": "6.9.0"
+    "eslint-plugin-react": "6.9.0",
+    "mocha": "^3.2.0",
+    "request": "^2.81.0"
   }
 }

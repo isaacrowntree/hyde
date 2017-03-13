@@ -12,9 +12,9 @@ class Editor extends Component {
     event.preventDefault();
 
     Request.post({
-            url: 'http://localhost:3001/save',
-            form: {key: event.target.value}
-        });
+        url: 'http://localhost:3001/save',
+        form: {key: event.target.value}
+    });
   }
 
   render() {
@@ -23,7 +23,6 @@ class Editor extends Component {
         Editor
         <form>
           <textarea onChange={this.handleChange} />
-          <input type="submit" />
         </form>
       </div>
     );
