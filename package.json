@@ -15,7 +15,7 @@
     "client": "babel-node app/start-client.js",
     "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
     "lint": "eslint .",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha --reporter spec server"
   },
   "devDependencies": {
     "chai": "^3.5.0",
