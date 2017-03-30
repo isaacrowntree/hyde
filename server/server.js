@@ -4,7 +4,8 @@ const writer = require('./lib/writer');
 
 const app = express();
 
-app.set('port', (process.env.PORT || 3001));
+// app.set('port', (process.env.PORT || 3001));
+app.set('port', 3001);
 
 app.use(bp.json());
 app.use(bp.urlencoded({
