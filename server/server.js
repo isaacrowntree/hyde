@@ -1,15 +1,15 @@
 const express = require('express');
-const fs = require('fs')
 const bp = require('body-parser');
+const writer = require('./lib/writer');
 
 const app = express();
 
 app.set('port', (process.env.PORT || 3001));
 
 app.use(bp.json());
-app.use(bp.urlencoded({     // to support URL-encoded bodies
+app.use(bp.urlencoded({
   extended: true
-})); 
+}));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.post('/save', (req, res) => {
-  fs.writeFile("temp.md", req.body.key, function(err) {});
+  new writer().writeFile('temp.md', req.body.key);
   return true;
 });
 
