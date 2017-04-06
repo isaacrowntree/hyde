@@ -2,12 +2,15 @@
   "name": "hyde",
   "version": "0.0.1",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3000/",
   "dependencies": {
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "request": "^2.81.0",
-    "react-scripts": "^0.9.5"
+    "react-router": "^4.0.0",
+    "react-scripts": "^0.9.5",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "enzyme": "^2.7.1",
