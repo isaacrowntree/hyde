@@ -6,33 +6,34 @@
     "node": "7.8.0"
   },
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
-    "babel-cli": "6.14.0",
-    "babel-core": "6.14.0",
     "body-parser": "^1.17.1",
-    "concurrently": "^3.1.0",
+    "concurrently": "^3.4.0",
     "express": "^4.15.2",
-    "fs": "0.0.1-security"
-  },
-  "scripts": {
-    "prestart": "cd app && npm install && cd ..",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "babel-node server/server.js",
-    "client": "babel-node app/start-client.js",
-    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
-    "lint": "eslint .",
-    "test": "./node_modules/.bin/mocha --reporter spec server/test"
+    "fs": "0.0.1-security",
+    "morgan": "^1.8.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0",
+    "react-scripts": "^0.9.5",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "concurrently": "3.1.0",
-    "eslint": "^3.16.1",
-    "eslint-config-airbnb": "14.1.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "4.0.0",
-    "eslint-plugin-react": "6.9.0",
-    "mocha": "^3.2.0",
-    "request": "^2.81.0"
+    "enzyme": "^2.7.1",
+    "react-addons-test-utils": "^15.4.2",
+    "request": "^2.81.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "dev": "concurrently  \"npm start\" \"node server\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "server-test": "./node_modules/.bin/mocha --reporter spec server/test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",

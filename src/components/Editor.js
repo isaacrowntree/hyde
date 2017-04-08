@@ -12,7 +12,7 @@ class Editor extends Component {
     event.preventDefault();
 
     Request.post({
-        url: 'http://localhost:3001/save',
+        url: 'http://localhost:3001/api',
         form: {key: event.target.value}
     });
   }
