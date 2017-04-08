@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "a content management system for Jekyll-based websites",
   "private": true,
+  "engines": {    
+    "node": "7.x"   
+  },
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -26,6 +29,7 @@
   },
   "scripts": {
     "dev": "concurrently  \"npm react\" \"node server\"",
+    "prestart": "npm run build",
     "start": "node server",
     "react": "react-scripts start",
     "build": "react-scripts build",
