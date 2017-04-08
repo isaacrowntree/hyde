@@ -13,8 +13,8 @@
     "express": "^4.15.2",
     "fs": "0.0.1-security",
     "morgan": "^1.8.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "react-scripts": "^0.9.5",
@@ -23,12 +23,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "enzyme": "^2.7.1",
-    "react-addons-test-utils": "^15.4.2",
-    "request": "^2.81.0",
+    "react-addons-test-utils": "^15.5.1",
     "mocha": "^3.2.0"
   },
   "scripts": {
-    "dev": "concurrently  \"npm react\" \"node server\"",
+    "dev": "concurrently  \"npm run react\" \"node server\"",
     "prestart": "npm run build",
     "start": "node server",
     "react": "react-scripts start",
