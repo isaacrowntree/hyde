@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const writer = require("../lib/writer");
+const writer = require("./../lib/writer");
 const fs = require('fs');
 
 describe('Writer', () => {
@@ -23,10 +23,6 @@ describe('Writer', () => {
 
       expect(fd).to.eq(content);
     });
-  });
-
-  afterEach(() => {
     fs.unlink(testFile);
   });
-
 });
