@@ -2,9 +2,6 @@
   "name": "hyde",
   "version": "0.0.1",
   "description": "a content management system for Jekyll-based websites",
-  "engines": {
-    "node": "7.8.0"
-  },
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -28,8 +25,9 @@
     "mocha": "^3.2.0"
   },
   "scripts": {
-    "dev": "concurrently  \"npm start\" \"node server\"",
-    "start": "react-scripts start",
+    "dev": "concurrently  \"npm react\" \"node server\"",
+    "start": "node server",
+    "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "server-test": "./node_modules/.bin/mocha --reporter spec server/test",
