@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "a content management system for Jekyll-based websites",
   "private": true,
-  "engines": {    
-    "node": "7.x"   
+  "engines": {
+    "node": "7.x"
   },
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -13,6 +13,7 @@
     "express": "^4.15.2",
     "fs": "0.0.1-security",
     "morgan": "^1.8.1",
+    "nodegit": "^0.18.0",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-router": "^4.0.0",
@@ -24,7 +25,8 @@
     "chai": "^3.5.0",
     "enzyme": "^2.7.1",
     "react-addons-test-utils": "^15.5.1",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "promisify": "0.0.3"
   },
   "scripts": {
     "dev": "concurrently  \"npm run react\" \"node server\"",
