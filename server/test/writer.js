@@ -1,10 +1,20 @@
 const expect = require("chai").expect;
 const writer = require("./../lib/writer");
 const fs = require('fs');
+const promisify = require("promisify-node");
+const fse = promisify(require("fs-extra"));
 
 describe('Writer', () => {
 
-  const testFile = 'temp.md';
+  const testFile = './tmp/temp.md';
+
+  beforeEach(function() {
+    return fse.remove(testFile).catch(function(err) {
+      console.log(err);
+
+      throw err;
+    });
+  });
 
   it('should write a temp file', () => {
     const content = 'test';
@@ -12,17 +22,7 @@ describe('Writer', () => {
     new writer().writeFile(testFile, content);
 
     fs.open(testFile, 'r', (err, fd) => {
-      if (err) {
-        if (err.code === 'ENOENT') {
-          console.error(`${testFile} does not exist`);
-          return;
-        }
-
-        throw err;
-      }
-
       expect(fd).to.eq(content);
     });
-    fs.unlink(testFile);
   });
 });
