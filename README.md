@@ -3,13 +3,14 @@ _a content management system for Jekyll-based websites_
 
 ## Installation
 
-1. You will need [npm & node](https://nodejs.org/en/download/)
+1. Install [node.js](https://nodejs.org/en/download/)
+2. Install [yarn](https://yarnpkg.com/en/)
 2. Clone the repo
-3. In the root directory run `npm install` to grab dependencies
+3. In the root directory run `yarn` to grab dependencies
 
 ## Run
 
-`npm run dev`
+`yarn dev`
 
 ## Development tasks
 
