@@ -1,16 +1,29 @@
-const exec = require('child_process').exec;
+const exec = require('child-process-promise').exec;
 
-const url = process.env.GIT || 'https://github.com/suzannahrowntree/suzannahrowntree.site.git';
-
-const path = './tmp/' + url.split(/\//).pop(-1);
+const _commands = {
+	clone: 'git clone'
+};
 
 class Git {
+	constructor(url) {
+		this._url = url;
+	}
+
   clone() {
-    const gitClone = 'git clone ' + url + ' ' + path;
-    exec(gitClone, function(err, stdout, stderr) {
-      if (err) throw err;
-      else console.log(stdout);
-    });
+    return exec(`${_commands.clone} ${this._url} ${this._path()}`)
+	    .then(function(result) {
+	    	const stdout = result.stdout;
+	    	const stderr = result.stderr;
+	    	console.log('stdout: ', stdout);
+	    	console.log('stderr: ', stderr);
+	    })
+	    .catch(function (err) {
+	    	console.error('ERROR: ', err);
+	    });
+  }
+
+  _path() {
+  	return `./tmp/${this._url.split(/\//).pop(-1)}`;
   }
 }
 
