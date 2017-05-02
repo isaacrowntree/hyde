@@ -20,7 +20,6 @@ describe('Git', () => {
     failure = false;
   });
 
-
   describe('when cloning', () => {
     it('can resolve', () => {
       exec.resolves(success);
