@@ -3,18 +3,19 @@
   "version": "0.0.1",
   "description": "a content management system for Jekyll-based websites",
   "private": true,
-  "engines": {    
-    "node": "7.x"   
+  "engines": {
+    "node": "7.x"
   },
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "child-process-promise": "^2.2.1",
     "concurrently": "^3.4.0",
     "express": "^4.15.2",
     "fs": "0.0.1-security",
     "morgan": "^1.8.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "react-scripts": "^0.9.5",
@@ -23,18 +24,20 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "enzyme": "^2.7.1",
-    "react-addons-test-utils": "^15.4.2",
-    "request": "^2.81.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.5.1",
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0",
+    "sinon-stub-promise": "^4.0.0"
   },
   "scripts": {
-    "dev": "concurrently  \"npm react\" \"node server\"",
-    "prestart": "npm run build",
+    "dev": "concurrently  \"yarn react\" \"node server\"",
+    "prestart": "yarn build",
     "start": "node server",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "server-test": "./node_modules/.bin/mocha --reporter spec server/test",
+    "test-server-watch": "./node_modules/.bin/mocha -w --reporter spec server/test",
     "eject": "react-scripts eject"
   },
   "repository": {

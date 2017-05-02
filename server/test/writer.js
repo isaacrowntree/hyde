@@ -1,28 +1,28 @@
-const expect = require("chai").expect;
-const writer = require("./../lib/writer");
-const fs = require('fs');
+// const expect = require("chai").expect;
+// const writer = require("./../lib/writer");
+// const fs = require('fs');
+// const promisify = require("promisify-node");
+// const fse = promisify(require("fs-extra"));
 
-describe('Writer', () => {
+// describe('Writer', () => {
 
-  const testFile = 'temp.md';
+//   const testFile = './tmp/temp.md';
 
-  it('should write a temp file', () => {
-    const content = 'test';
+//   beforeEach(function() {
+//     return fse.remove(testFile).catch(function(err) {
+//       console.log(err);
 
-    new writer().writeFile(testFile, content);
+//       throw err;
+//     });
+//   });
 
-    fs.open(testFile, 'r', (err, fd) => {
-      if (err) {
-        if (err.code === 'ENOENT') {
-          console.error(`${testFile} does not exist`);
-          return;
-        }
+//   it('should write a temp file', () => {
+//     const content = 'test';
 
-        throw err;
-      }
+//     new writer().writeFile(testFile, content);
 
-      expect(fd).to.eq(content);
-    });
-    fs.unlink(testFile);
-  });
-});
+//     fs.open(testFile, 'r', (err, fd) => {
+//       expect(fd).to.eq(content);
+//     });
+//   });
+// });
