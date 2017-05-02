@@ -1,16 +1,16 @@
-const exec = require('child-process-promise').exec;
+const _exec = require('child-process-promise').exec;
 
 const _commands = {
 	clone: 'git clone'
 };
 
 class Git {
-	constructor(url) {
-		this._url = url;
+	constructor(exec = _exec) {
+    this.exec = exec;
 	}
 
-  clone() {
-    return exec(`${_commands.clone} ${this._url} ${this._path()}`)
+  clone(url) {
+    return this.exec(`${_commands.clone} ${url} ${this._path(url)}`)
 	    .then(function(result) {
 	    	const stdout = result.stdout;
 	    	const stderr = result.stderr;
@@ -22,8 +22,8 @@ class Git {
 	    });
   }
 
-  _path() {
-  	return `./tmp/${this._url.split(/\//).pop(-1)}`;
+  _path(url) {
+  	return `./tmp/${url.split(/\//).pop(-1)}`;
   }
 }
 
