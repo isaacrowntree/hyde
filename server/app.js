@@ -4,8 +4,13 @@ const path = require('path');
 const bp = require('body-parser');
 
 const writer = require('./lib/writer');
+const git = require('./lib/git');
 
 const app = express();
+
+// Init data repo
+const test = 'https://github.com/suzannahrowntree/suzannahrowntree.site.git';
+console.log(new git().clone(process.env.GIT_REPO || test));
 
 // Logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
