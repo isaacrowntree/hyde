@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Editor from './components/Editor.js'
-import './App.css';
+import Files from './components/Files/Files.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Editor />
+        <Files />
       </div>
     );
   }
