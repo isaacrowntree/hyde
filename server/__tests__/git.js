@@ -1,8 +1,8 @@
-const sinon = require("sinon");
-var sinonStubPromise = require('sinon-stub-promise');
+import sinon from 'sinon';
+import sinonStubPromise from 'sinon-stub-promise';
 sinonStubPromise(sinon);
 
-const git = require("./../lib/git");
+import git from './../lib/git';
 
 describe('Git', () => {
   let exec,

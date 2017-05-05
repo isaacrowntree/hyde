@@ -1,6 +1,6 @@
 'use strict';
-const config = require('./config');
-const app = require('./app');
+import config from './config';
+import app from './app';
 
 app.set('port', config.port);
 

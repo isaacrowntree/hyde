@@ -4,4 +4,4 @@ const config = {
   repository: process.env.GIT_REPO || 'https://github.com/suzannahrowntree/suzannahrowntree.site.git',
 };
 
-module.exports = config;
+export default config;

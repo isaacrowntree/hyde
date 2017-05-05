@@ -1,5 +1,6 @@
-const _exec = require('child-process-promise').exec;
-const fs = require('fs');
+'use strict';
+import { exec as _exec } from 'child-process-promise';
+import fs from 'fs';
 
 const _commands = {
   clone: 'git clone'
@@ -31,4 +32,4 @@ class Git {
   }
 }
 
-module.exports = Git;
+export default Git;

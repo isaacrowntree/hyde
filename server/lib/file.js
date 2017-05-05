@@ -1,4 +1,5 @@
-const fs = require('fs');
+'use strict';
+import fs from 'fs';
 
 const file = (file, res) => {
   fs.readFile(file, 'utf8', function(err, data) {
@@ -7,4 +8,4 @@ const file = (file, res) => {
   });
 };
 
-module.exports = file;
+export default file;

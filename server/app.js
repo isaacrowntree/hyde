@@ -1,13 +1,13 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const bp = require('body-parser');
+'use strict';
+import express from 'express';
+import morgan from 'morgan';
+import path from 'path';
+import bp from 'body-parser';
 
-const config = require('./config');
-
-const git = require('./lib/git');
-const files = require('./lib/files');
-const file = require('./lib/file');
+import config from './config';
+import git from './lib/git';
+import files from './lib/files';
+import file from './lib/file';
 
 const app = express();
 
@@ -49,4 +49,4 @@ app.post('/file', (req, res) => {
   }
 });
 
-module.exports = app;
+export default app;
