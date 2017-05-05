@@ -4,7 +4,7 @@ import axios from 'axios';
 import ListItem from './ListItem.js';
 import Editor from './../Editor/Editor.js';
 
-const config = require('./../../../server/config');
+import { config } from './../../../server/config';
 
 class Files extends Component {
   constructor(props) {
@@ -13,14 +13,22 @@ class Files extends Component {
     this.state = {
       files: [],
       file: '',
+      data: false,
     };
     this.edit = this.edit.bind(this);
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:${config.port}/files`).then(res => {
-      this.setState({ files: res.data });
+    axios.get(`http://localhost:${config.port}/repository`).then(res => {
+      console.log(res);
+      this.setState({ data: res.data });
     });
+
+    if (this.state.data === false) {
+      axios.get(`http://localhost:${config.port}/files`).then(res => {
+        this.setState({ files: res.data });
+      });
+    }
   }
 
   edit(value) {

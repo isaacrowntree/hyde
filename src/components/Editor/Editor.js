@@ -4,7 +4,7 @@ import marked from 'marked';
 import Interweave from 'interweave';
 import './Editor.css';
 
-const config = require('./../../../server/config');
+import { config } from './../../../server/config';
 
 class Editor extends Component {
   constructor(props) {

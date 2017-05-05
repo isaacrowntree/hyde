@@ -7,8 +7,9 @@ const _commands = {
 };
 
 class Git {
-  constructor(exec = _exec) {
+  constructor(res, exec = _exec) {
     this.exec = exec;
+    this.res = res;
   }
 
   clone(url, message) {
@@ -17,6 +18,7 @@ class Git {
     if (!fs.existsSync(path)) {
       return this.exec(`${_commands.clone} ${url} ${path}`)
         .then(function(result) {
+          this.res.send(true);
         	//console.log(result.stdout, result.stderr);
         })
         .catch(function (err) {

@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import path from 'path';
 import bp from 'body-parser';
 
-import config from './config';
+import { config } from './config';
 import git from './lib/git';
 import files from './lib/files';
 import file from './lib/file';
@@ -35,8 +35,9 @@ app.use(bp.urlencoded({extended: true}));
 
 // Node API
 
-// Needs to run async from API call
-new git().clone(config.repository);
+app.get('/repository', (req, res) => {
+  new git(res).clone(config.repository);
+});
 
 app.get('/files', (req, res) => {
   files(config.repository, res);

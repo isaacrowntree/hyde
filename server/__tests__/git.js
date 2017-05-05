@@ -23,12 +23,12 @@ describe('Git', () => {
     it('can resolve', () => {
       var resolved = true;
       exec.resolves(success);
-      expect(new git(exec).clone(url, resolved).resolveValue).toEqual(success);
+      expect(new git(null, exec).clone(url, resolved).resolveValue).toEqual(success);
     });
 
     it('cannot resolve', () => {
       exec.rejects(failure);
-      expect(new git(exec).clone(url).rejected).toEqual(failure);
+      expect(new git(null, exec).clone(url).rejected).toEqual(failure);
     });
   });
 });
