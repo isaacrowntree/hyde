@@ -10,16 +10,16 @@ class Git {
     this.exec = exec;
   }
 
-  clone(url) {
+  clone(url, message) {
     const path = this._path(url);
 
     if (!fs.existsSync(path)) {
-      this.exec(`${_commands.clone} ${url} ${path}`)
+      return this.exec(`${_commands.clone} ${url} ${path}`)
         .then(function(result) {
-        	console.log(result.stdout, result.stderr);
+        	//console.log(result.stdout, result.stderr);
         })
         .catch(function (err) {
-          console.error('ERROR: ', err);
+          //console.error('ERROR: ', err);
         });
     } else {
       return 'Already exists.';
@@ -27,7 +27,7 @@ class Git {
   }
 
   _path(url) {
-    return `./tmp/${url.split(/\//).pop(-1)}`;
+    return `./tmp/${url.substr(url.lastIndexOf('/') + 1)}`;
   }
 }
 

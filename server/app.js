@@ -5,7 +5,6 @@ const bp = require('body-parser');
 
 const config = require('./config');
 
-const writer = require('./lib/writer');
 const git = require('./lib/git');
 const files = require('./lib/files');
 const file = require('./lib/file');

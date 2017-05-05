@@ -7,8 +7,10 @@ const files = (repository, res) => {
   });
 };
 
+
+// DRY!
 const _path = (url) => {
-  return `./tmp/${url.split(/\//).pop(-1)}`;
+  return `./tmp/${url.substr(url.lastIndexOf('/') + 1)}`;
 };
 
 module.exports = files;

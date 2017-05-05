@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import ReactDOM from 'react-dom';
-import Editor from './Editor';
+import Editor from '../../../components/Editor/Editor';
 
 describe("<Editor />", () => {
 
