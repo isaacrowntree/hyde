@@ -38,9 +38,7 @@ app.get('/files', (req, res) => {
 });
 
 app.post('/file', (req, res) => {
-  if (req.body.file !== '') {
-    file(req.body.file, res);
-  }
+  file(req.body.file, res);
 });
 
 export default app;
