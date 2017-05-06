@@ -1,6 +1,5 @@
 'use strict';
-import { exec as _exec } from 'child-process-promise';
-import fs from 'fs';
+import { exec as _exec } from 'child_process';
 
 const _commands = {
   clone: 'git clone'
@@ -12,25 +11,13 @@ class Git {
     this.res = res;
   }
 
-  clone(url, message) {
-    const path = this._path(url);
-
-    if (!fs.existsSync(path)) {
-      return this.exec(`${_commands.clone} ${url} ${path}`)
-        .then(function(result) {
-          this.res.send(true);
-        	//console.log(result.stdout, result.stderr);
-        })
-        .catch(function (err) {
-          //console.error('ERROR: ', err);
-        });
-    } else {
-      return 'Already exists.';
-    }
-  }
-
-  _path(url) {
-    return `./tmp/${url.substr(url.lastIndexOf('/') + 1)}`;
+  clone(url, path) {
+    this.exec(`${_commands.clone} ${url} ${path}`, (err, stdout, stderr) => {
+      if (err) {
+        return;
+      }
+      this.res(true);
+    });
   }
 }
 

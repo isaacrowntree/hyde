@@ -13,22 +13,14 @@ class Files extends Component {
     this.state = {
       files: [],
       file: '',
-      data: false,
     };
     this.edit = this.edit.bind(this);
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:${config.port}/repository`).then(res => {
-      console.log(res);
-      this.setState({ data: res.data });
+    axios.get(`http://localhost:${config.port}/files`).then(res => {
+      this.setState({ files: res.data });
     });
-
-    if (this.state.data === false) {
-      axios.get(`http://localhost:${config.port}/files`).then(res => {
-        this.setState({ files: res.data });
-      });
-    }
   }
 
   edit(value) {

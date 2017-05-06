@@ -5,7 +5,6 @@ import path from 'path';
 import bp from 'body-parser';
 
 import { config } from './config';
-import git from './lib/git';
 import files from './lib/files';
 import file from './lib/file';
 
@@ -34,18 +33,12 @@ app.use(bp.json());
 app.use(bp.urlencoded({extended: true}));
 
 // Node API
-
-app.get('/repository', (req, res) => {
-  new git(res).clone(config.repository);
-});
-
 app.get('/files', (req, res) => {
   files(config.repository, res);
 });
 
 app.post('/file', (req, res) => {
   if (req.body.file !== '') {
-    console.log(req.body.file);
     file(req.body.file, res);
   }
 });
