@@ -20,7 +20,7 @@ class Editor extends Component {
   }
 
   file(file) {
-    if (file != '') {
+    if (file !== '') {
       axios.post(`http://localhost:${config.port}/file`, { file }).then(res => {
         this.setState({ fileContent: res.data });
       });

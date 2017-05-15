@@ -1,34 +1,32 @@
 import sinon from 'sinon';
-import sinonStubPromise from 'sinon-stub-promise';
-sinonStubPromise(sinon);
+import child_process from 'child_process';
 
 import git from './../lib/git';
 
 describe('Git', () => {
-  let exec,
-      url,
-      success,
-      failure,
-      sandbox;
 
-  beforeEach(function() {
-    exec = sinon.stub().returnsPromise();
-    url = 'http://github.com/isaacrowntree/hyde';
-    success = {stdout: true, stderr: false};
-    failure = false;
+  let exec, res;
+
+  beforeEach(() => {
+    exec = sinon.stub(child_process, 'exec');
+    res = sinon.stub();
   });
 
-  describe('when cloning', () => {
-
-    it('can resolve', () => {
-      var resolved = true;
-      exec.resolves(success);
-      expect(new git(null, exec).clone(url, resolved).resolveValue).toEqual(success);
+  describe('clone', () => {
+    it('can successfuly clone', () => {
+      exec.yields(false, true, true);
+      new git(res).clone('sample repository', 'hyde');
+      expect(res.called).toEqual(true);
     });
 
-    it('cannot resolve', () => {
-      exec.rejects(failure);
-      expect(new git(null, exec).clone(url).rejected).toEqual(failure);
+    it('ran across an error', () => {
+      exec.yields('false', true, true);
+      new git(res).clone('sample repository', 'hyde');
+      expect(res.called).toEqual(false);
     });
+  });
+
+  afterEach(() => {
+    child_process.exec.restore();
   });
 });
