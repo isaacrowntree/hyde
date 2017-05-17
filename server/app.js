@@ -7,6 +7,7 @@ import bp from 'body-parser';
 import { config } from './config';
 import files from './lib/files';
 import file from './lib/file';
+import save from './lib/save';
 
 const app = express();
 
@@ -39,6 +40,10 @@ app.get('/files', (req, res) => {
 
 app.post('/file', (req, res) => {
   file(req.body.file, res);
+});
+
+app.post('/save', (req, res) => {
+  save(req.body.file, req.body.data, res);
 });
 
 export default app;
