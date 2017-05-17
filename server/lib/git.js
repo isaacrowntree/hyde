@@ -1,30 +1,23 @@
-const _exec = require('child-process-promise').exec;
+'use strict';
+import { exec } from 'child_process';
 
 const _commands = {
   clone: 'git clone'
 };
 
 class Git {
-  constructor(exec = _exec) {
-    this.exec = exec;
+  constructor(resolve) {
+    this.resolve = resolve;
   }
 
-  clone(url) {
-    return this.exec(`${_commands.clone} ${url} ${this._path(url)}`)
-      .then(function(result) {
-        const stdout = result.stdout;
-        const stderr = result.stderr;
-        console.log('stdout: ', stdout);
-        console.log('stderr: ', stderr);
-      })
-      .catch(function (err) {
-        console.error('ERROR: ', err);
-      });
-  }
-
-  _path(url) {
-    return `./tmp/${url.split(/\//).pop(-1)}`;
+  clone(url, path) {
+    exec(`${_commands.clone} ${url} ${path}`, (err, stdout, stderr) => {
+      if (err) {
+        return;
+      }
+      this.resolve(true);
+    });
   }
 }
 
-module.exports = Git;
+export default Git;

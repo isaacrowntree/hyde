@@ -1,9 +1,9 @@
 'use strict';
+import { config } from './config';
+import app from './app';
 
-const app = require('./app');
+app.set('port', config.port);
 
-app.set('port', (process.env.PORT || 3001));
-
-app.listen(app.get('port'), () => {
-	console.log(`App listening on port ${app.get('port')}!`); // eslint-disable-line no-console
+app.listen(config.port, () => {
+	console.log(`App listening on port ${config.port}!`); // eslint-disable-line no-console
 });
