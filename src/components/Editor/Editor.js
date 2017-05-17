@@ -18,13 +18,13 @@ class Editor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      this.file(nextProps.file);
-      this.setState({ file: nextProps.file });
+    this.file(nextProps.file);
+    this.setState({ file: nextProps.file });
   }
 
   file(file) {
     if (file !== '') {
-      axios.post(`http://localhost:${config.port}/file`, { file }).then(res => {
+      axios.post(`${config.url}/file`, { file }).then(res => {
         this.setState({ fileContent: res.data });
       });
     }
@@ -35,7 +35,7 @@ class Editor extends Component {
   }
 
   handleSubmit(event) {
-    axios.post(`http://localhost:${config.port}/save`, { file: this.state.file, data: this.state.fileContent }).then(res => {
+    axios.post(`${config.url}/save`, { file: this.state.file, data: this.state.fileContent }).then(res => {
       this.setState({ saved: true });
     });
   }

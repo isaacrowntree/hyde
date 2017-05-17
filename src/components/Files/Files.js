@@ -18,7 +18,7 @@ class Files extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:${config.port}/files`).then(res => {
+    axios.get(`${config.url}/files`).then(res => {
       this.setState({ files: res.data });
     });
   }

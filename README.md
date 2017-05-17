@@ -8,9 +8,24 @@ _a content management system for Jekyll-based websites_
 2. Clone the repo
 3. In the root directory run `yarn` to grab dependencies
 
-## Run
+## Run Locally
+
+In the root directory:
 
 `yarn dev`
+
+## Run on Heroku
+
+In the root directory:
+
+```
+heroku create $APP_NAME --buildpack https://github.com/mars/create-react-app-buildpack
+
+git push heroku master
+
+heroku open
+
+```
 
 ## Development tasks
 

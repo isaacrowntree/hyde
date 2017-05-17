@@ -14,15 +14,11 @@ const app = express();
 // Logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
-// Static assets
-if (config.environment === 'production') {
-	app.use(express.static(path.resolve(__dirname, '..', 'build')));
+// Node API
+app.use(bp.json());
+app.use(bp.urlencoded({extended: true}));
 
-	// Always return the main index.html so that react-router renders the route in the client
-	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-	});
-} else { // Dev CORS
+if (config.environment !== 'production') {
   app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -30,10 +26,6 @@ if (config.environment === 'production') {
   });
 }
 
-app.use(bp.json());
-app.use(bp.urlencoded({extended: true}));
-
-// Node API
 app.get('/files', (req, res) => {
   files(config.repository, res);
 });
@@ -45,5 +37,15 @@ app.post('/file', (req, res) => {
 app.post('/save', (req, res) => {
   save(req.body.file, req.body.data, res);
 });
+
+// Static assets
+if (config.environment === 'production') {
+	app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+	// Always return the main index.html so that react-router renders the route in the client
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+	});
+}
 
 export default app;
