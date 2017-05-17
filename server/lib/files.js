@@ -8,7 +8,7 @@ const cloneRepository = (url, path, res) => {
 };
 
 const getFiles = (repository, res) => {
-  dir.files(_path(repository), function(err, files) {
+  dir.files(_path(repository), (err, files) => {
     if (err) throw err;
     res.send(files);
   });

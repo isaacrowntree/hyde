@@ -19,7 +19,7 @@ describe('file', () => {
 
   it('fails properly', () => {
     readFile.yields(true, false);
-    expect(() => { file('file', res) }).toThrow();
+    expect(() => file('file', res)).toThrow();
   });
 
   afterEach(() => {
