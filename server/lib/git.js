@@ -4,6 +4,7 @@ import { exec } from 'child-process-promise';
 const _commands = {
   clone: 'git clone',
   pull:  'git pull',
+  commitAndPush: 'git add . && git commit -m "sample commit" && git push'
 };
 
 class Git {
@@ -13,6 +14,10 @@ class Git {
 
   pull(url, path) {
     return exec(`cd ${path} && ${_commands.pull}`);
+  }
+
+  commitAndPush(path) {
+    return exec(`cd ${path} && ${_commands.commitAndPush}`);
   }
 }
 
