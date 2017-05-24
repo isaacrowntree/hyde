@@ -1,31 +1,45 @@
 import sinon from 'sinon';
+import sinonStubPromise from 'sinon-stub-promise';
+sinonStubPromise(sinon);
 import fs from 'fs';
 import dir from 'node-dir';
 import files from './../lib/files';
 
 describe('files', () => {
 
-  let existsSync,
-      res = { send: function(arg) { this.sent = arg }};
+  let res,
+      existsSync,
+      cloneRepository,
+      pullRepository;
 
   beforeEach(() => {
     sinon.stub(dir, 'files').yields(false, true);
+    res = { send: function(arg) { this.sent = arg }};
+    existsSync = sinon.stub(fs, 'existsSync');
   });
 
   it('can get files if they exist', () => {
-    existsSync = sinon.stub(fs, 'existsSync').returns(true);
-    files('test', res);
+    pullRepository = sinon.stub().returnsPromise();
+    pullRepository.resolves(true);
+
+    existsSync.returns(true);
+
+    expect(files('test', res, cloneRepository, pullRepository).resolved).toEqual(true);
     expect(res.sent).toEqual(true);
   });
 
   it('can get files if they don\'t exist', () => {
-    existsSync = sinon.stub(fs, 'existsSync').returns(false);
-    files('test', res);
+    cloneRepository = sinon.stub().returnsPromise();
+    cloneRepository.resolves(true);
+
+    existsSync.returns(false);
+
+    expect(files('test', res, cloneRepository, pullRepository).resolved).toEqual(true);
     expect(res.sent).toEqual(true);
   });
 
   afterEach(() => {
-    fs.existsSync.restore();
     dir.files.restore();
+    fs.existsSync.restore();
   });
 });

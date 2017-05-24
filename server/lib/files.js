@@ -3,9 +3,13 @@ import dir from 'node-dir';
 import git from './git';
 import fs from 'fs';
 
-const cloneRepository = (url, path, res) => {
-  new git(res).clone(url, path);
-};
+const cloneRepository = (url, path) => (
+  new git().clone(url, path)
+);
+
+const pullRepository = (url, path) => (
+  new git().pull(url, path)
+);
 
 const getFiles = (repository, res) => {
   dir.files(_path(repository), (err, files) => {
@@ -14,16 +18,17 @@ const getFiles = (repository, res) => {
   });
 };
 
-const files = (repository, res) => {
+const files = (repository, res, clone = cloneRepository, pull = pullRepository) => {
   let path = _path(repository);
 
   if (!fs.existsSync(path)) {
-    new Promise((resolve, reject) => {
-      cloneRepository(repository, path, resolve);
-    })
-    .then(() => { getFiles(repository, res) });
+    return clone(repository, path).then((stdout, stderr) => (
+      getFiles(repository, res)
+    ));
   } else {
-    getFiles(repository, res);
+    return pull(repository, path).then((stdout, stderr) => (
+      getFiles(repository, res)
+    ));
   }
 };
 
