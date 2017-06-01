@@ -42,11 +42,15 @@ class Editor extends Component {
 
   render() {
     return (
-      <div>
-        <textarea className="Editor" value={this.state.fileContent} onChange={this.handleChange.bind(this)} />
-        <button onClick={this.handleSubmit.bind(this)}>Publish</button>
-        <h2>Preview</h2>
-        <Interweave tagName="div" content={marked(this.state.fileContent) } />
+      <div className="row">
+        <div className="col-md-5 col-md-offset-2">
+          <textarea className="Editor" value={this.state.fileContent} onChange={this.handleChange.bind(this)} />
+          <br />
+          <button onClick={this.handleSubmit.bind(this)}>Publish</button>
+        </div>
+        <div className="col-md-5">
+          <Interweave tagName="div" content={marked(this.state.fileContent) } />
+        </div>
       </div>
     );
   }

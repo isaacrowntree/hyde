@@ -6,6 +6,8 @@ import Editor from './../Editor/Editor.js';
 
 import { config } from './../../../server/config';
 
+import './Files.css';
+
 class Files extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,9 @@ class Files extends Component {
     }
     return (
       <div>
-        { rows }
+        <div className="list-group">
+          { rows }
+        </div>
         <Editor file={this.state.file} />
       </div>
     );

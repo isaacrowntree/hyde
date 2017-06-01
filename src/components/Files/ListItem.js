@@ -10,10 +10,14 @@ class ListItem extends Component {
     this.props.onItemClick(this.props.value);
   }
 
+  format(val) {
+    return val.split('/').slice(2).join('/');
+  }
+
   render() {
     return (
-      <li onClick={this.handleClick}>
-        {this.props.value}
+      <li className="list-group-item" onClick={this.handleClick}>
+        {this.format(this.props.value)}
       </li>
     );
   }
