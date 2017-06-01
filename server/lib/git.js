@@ -4,7 +4,7 @@ import { exec } from 'child-process-promise';
 const _commands = {
   clone: 'git clone',
   pull:  'git pull',
-  commitAndPush: 'git add . && git commit -m "sample commit" && git push'
+  commitAndPush: 'git add . && git commit -m "Hyde Commit" && git push'
 };
 
 class Git {

@@ -7,13 +7,13 @@ const commitAndPush = () => (
   new git().commitAndPush(_path(config.repository))
 );
 
-const save = (file, data, res) => {
+const save = (file, data, res, save = commitAndPush) => {
 
-  // TODO: ensure that there are no orphaned changes
+  // TODO: ensure that there are no orphaned changes leading to race conditions
 
   fs.writeFile(file, data, (err, data) => {
     if (err) throw err;
-    commitAndPush().then(() => (res.send(true)));
+    save().then(() => (res.send(true)));
   });
 };
 

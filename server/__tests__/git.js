@@ -37,6 +37,18 @@ describe('Git', () => {
     });
   });
 
+  describe('commitAndPush', () => {
+    it('can successfuly commitAndPush', () => {
+      exec.resolves(true);
+      expect(new git().commitAndPush('sample repository', 'hyde').resolved).toEqual(true);
+    });
+
+    it('ran across an error', () => {
+      exec.rejects(true);
+      expect(new git().commitAndPush('sample repository', 'hyde').rejected).toEqual(true);
+    });
+  });
+
   afterEach(() => {
     child_process_promise.exec.restore();
   });
