@@ -1,22 +1,23 @@
 'use strict';
-import { exec } from 'child_process';
+import { exec } from 'child-process-promise';
 
 const _commands = {
-  clone: 'git clone'
+  clone: 'git clone',
+  pull:  'git pull',
+  commitAndPush: 'git add . && git commit -m "Hyde Commit" && git push'
 };
 
 class Git {
-  constructor(resolve) {
-    this.resolve = resolve;
+  clone(url, path) {
+    return exec(`${_commands.clone} ${url} ${path}`);
   }
 
-  clone(url, path) {
-    exec(`${_commands.clone} ${url} ${path}`, (err, stdout, stderr) => {
-      if (err) {
-        return;
-      }
-      this.resolve(true);
-    });
+  pull(url, path) {
+    return exec(`cd ${path} && ${_commands.pull}`);
+  }
+
+  commitAndPush(path) {
+    return exec(`cd ${path} && ${_commands.commitAndPush}`);
   }
 }
 

@@ -1278,9 +1278,13 @@ cheerio@^0.22.0:
     lodash.reject "^4.4.0"
     lodash.some "^4.4.0"
 
-child-process@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/child-process/-/child-process-1.0.2.tgz#98974dc7ed1ee4c6229f8e305fa7313a6885a7f2"
+child-process-promise@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/child-process-promise/-/child-process-promise-2.2.1.tgz#4730a11ef610fad450b8f223c79d31d7bdad8074"
+  dependencies:
+    cross-spawn "^4.0.2"
+    node-version "^1.0.0"
+    promise-polyfill "^6.0.1"
 
 chokidar@^1.0.0, chokidar@^1.4.3, chokidar@^1.6.1:
   version "1.6.1"
@@ -1559,7 +1563,7 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     parse-json "^2.2.0"
     require-from-string "^1.1.0"
 
-cross-spawn@4.0.2:
+cross-spawn@4.0.2, cross-spawn@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
   dependencies:
@@ -4067,6 +4071,10 @@ node-pre-gyp@^0.6.29:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
+node-version@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-version/-/node-version-1.0.0.tgz#1b9b9584a9a7f7a6123f215cd14a652bf21ab19e"
+
 nodemon@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.11.0.tgz#226c562bd2a7b13d3d7518b49ad4828a3623d06c"
@@ -4732,6 +4740,10 @@ progress@^1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"
 
+promise-polyfill@^6.0.1:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.0.2.tgz#d9c86d3dc4dc2df9016e88946defd69b49b41162"
+
 promise@7.1.1, promise@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/promise/-/promise-7.1.1.tgz#489654c692616b8aa55b0724fa809bb7db49c5bf"
@@ -5354,6 +5366,10 @@ shellwords@^0.1.0:
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+sinon-stub-promise@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/sinon-stub-promise/-/sinon-stub-promise-4.0.0.tgz#6d498ba1198557cd01e3466af92dc7df725192c2"
 
 sinon@^2.1.0:
   version "2.2.0"

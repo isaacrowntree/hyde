@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "body-parser": "^1.17.1",
-    "child-process": "^1.0.2",
+    "child-process-promise": "^2.2.1",
     "concurrently": "^3.4.0",
     "express": "^4.15.2",
     "fs": "0.0.1-security",
@@ -32,7 +32,8 @@
     "nodemon": "^1.11.0",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
-    "sinon": "^2.1.0"
+    "sinon": "^2.1.0",
+    "sinon-stub-promise": "^4.0.0"
   },
   "scripts": {
     "dev": "concurrently  \"yarn react\" \"yarn dev-server\"",
