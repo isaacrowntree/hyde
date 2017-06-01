@@ -29,13 +29,24 @@ heroku open
 
 ## Development tasks
 
-Milestone V.1:
+Milestone V.2:
 
-- ~~Set up proof of concept React to tmp file form~~
-- ~~Build in a way that works on Heroku~~
-- ~~Connect to Github and put repo in /tmp~~
-- ~~Load contents of Jekyll data files into React~~
-- ~~Provide markdown editor for Jekyll data files~~
-- ~~Save editor contents to Jekyll data files~~
-- ~~Create new version in GIT repo and push~~
-- UI
+- Satisfy race conditions
+- Refactor the way that routing happens files/file/save? Seems clunky
+- Look at testing the frontend a bit more if needed (with Jest)
+- password hash generator with salt (for Heroku)
+- login page
+- auto-save editor to local storage every X seconds
+- environment variable setup for A) repo and B) passwords
+- Setup some kind of log message to frontend
+
+Milestone V.3:
+- image support
+- upload support
+
+Milestone V.4:
+- MD file creation support
+- MD file deletion support
+
+Milestone V.5:
+- Git History
