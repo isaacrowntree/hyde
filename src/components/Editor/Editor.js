@@ -15,6 +15,8 @@ class Editor extends Component {
       file: '',
       saved: false,
     };
+
+    this.interval = setInterval(() => this.autosave(), 2000);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,19 +26,33 @@ class Editor extends Component {
 
   file(file) {
     if (file !== '') {
-      axios.post(`${config.url}/file`, { file }).then(res => {
-        this.setState({ fileContent: res.data });
-      });
+      this.changesPending = false;
+      if (localStorage.getItem(file)) {
+        this.setState({ fileContent: localStorage.getItem(file) });
+      }
+      else {
+        axios.post(`${config.url}/file`, { file }).then(res => {
+          this.setState({ fileContent: res.data });
+        });
+      }
+    }
+  }
+
+  autosave() {
+    if (this.changesPending) {
+      localStorage.setItem(this.state.file, this.state.fileContent);
     }
   }
 
   handleChange(event) {
     this.setState({ fileContent: event.target.value });
+    this.changesPending = true;
   }
 
   handleSubmit(event) {
     axios.post(`${config.url}/save`, { file: this.state.file, data: this.state.fileContent }).then(res => {
       this.setState({ saved: true });
+      localStorage.removeItem(this.state.file);
     });
   }
 
