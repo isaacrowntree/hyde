@@ -11,7 +11,7 @@ class ListItem extends Component {
   }
 
   format(val) {
-    return val.split('/').slice(2).join('/');
+    return val.split('\\').slice(2).join('\\');
   }
 
   render() {
