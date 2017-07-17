@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      redirectToReferrer: false
+    };
+
+    this.login = this.login.bind(this);
+  }
+
+  login(e) {
+    this.setState({ redirectToReferrer: true });
+    e.preventDefault();
+  }
+
   render() {
+    if (this.state.redirectToReferrer) {
+      return (<Redirect to='/true' />);
+    }
+
     return (
       <div className="container">
         <div className="row justify-content-center">
@@ -9,9 +29,9 @@ class Login extends Component {
           <br />
             <div className="jumbotron">
               <h1>Login</h1>
-              <form>
+              <form onSubmit={this.login}>
                 <div className="form-group">
-                  <label for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input type="password" className="form-control" id="password" placeholder="Password"/>
                 </div>
                 <button type="submit" className="btn btn-primary pull-right">Submit</button>

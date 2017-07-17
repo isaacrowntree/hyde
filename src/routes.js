@@ -7,8 +7,8 @@ import Login from './Login';
 const Routes = (props) => (
   <BrowserRouter>
     <div>
-      <Route path="/" component={App} />
-      <Route path="/login" component={Login} />
+      <Route path="/" component={Login} />
+      <Route path="/app" component={App} />
     </div>
   </BrowserRouter>
 );
