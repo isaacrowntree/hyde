@@ -4,7 +4,7 @@ import axios from 'axios';
 import ListItem from './ListItem.js';
 import Editor from './../Editor/Editor.js';
 
-import { config } from './../../../server/config';
+import { config } from './../../config';
 
 import './Files.css';
 

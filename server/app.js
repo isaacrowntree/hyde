@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import path from 'path';
 import bp from 'body-parser';
 
-import { config } from './config';
+import { config } from './../src/config';
 import files from './lib/files';
 import file from './lib/file';
 import save from './lib/save';

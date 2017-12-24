@@ -1,4 +1,3 @@
-'use strict';
 var port = process.env.PORT || 3001;
 
 var config = {

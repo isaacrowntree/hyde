@@ -1,5 +1,5 @@
 'use strict';
-import { config } from './config';
+import { config } from './../src/config';
 import app from './app';
 
 app.set('port', config.port);

@@ -1,7 +1,7 @@
 'use strict';
 import fs from 'fs';
 import git from './git';
-import { config } from './../config';
+import { config } from './../../src/config';
 
 const commitAndPush = () => (
   new git().commitAndPush(_path(config.repository))
