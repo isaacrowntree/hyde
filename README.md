@@ -31,14 +31,14 @@ heroku open
 
 Milestone V.2:
 
-- Satisfy race conditions
-- Refactor the way that routing happens files/file/save? Seems clunky
-- Look at testing the frontend a bit more if needed (with Jest)
+- ~login page~
 - password hash generator with salt (for Heroku)
-- login page
-- auto-save editor to local storage every X seconds
+- auto-save to redux (and thus local-storage) every X seconds
 - environment variable setup for A) repo and B) passwords
-- Setup some kind of log message to frontend
+- Setup some kind of log message to frontend - saved, published, etc.
+- logout the user after X amount of time
+- testing redux implementation
+- jest snapshots
 
 Milestone V.3:
 - image support
