@@ -16,6 +16,16 @@ In the root directory:
 
 ## Run on Heroku
 
+Create a password and random salt:
+
+`node scripts/password.js --password=your_password --salt="your salt"`
+
+Heroku Config Variables:
+
+SALT = your salt
+PASSWORD = your new encrypted password
+GIT_REPO = your Jekyll repository
+
 In the root directory:
 
 ```
@@ -32,12 +42,13 @@ heroku open
 Milestone V.2:
 
 - ~login page~
-- password hash generator with salt (for Heroku)
-- environment variable setup for A) repo and B) passwords
+- ~password hash generator with salt (for Heroku)~
+- ~environment variable setup for A) repo and B) passwords~
 - Setup some kind of log message to frontend - saved, published, etc.
 - logout the user after X amount of time
 - testing redux implementation
 - jest snapshots
+- run locally without login
 
 Milestone V.3:
 - image support
