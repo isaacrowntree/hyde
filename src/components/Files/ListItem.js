@@ -11,7 +11,11 @@ class ListItem extends Component {
   }
 
   format(val) {
-    return val.split('\\').slice(2).join('\\');
+    let splitter = '\\';
+    if (val.split(splitter).length === 1) {
+      splitter = '/';
+    }
+    return val.split(splitter).slice(2).join(splitter);
   }
 
   render() {
