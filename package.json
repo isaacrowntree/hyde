@@ -31,14 +31,13 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "enzyme": "^3.2.0",
-    "nodemon": "^1.11.0",
     "react-test-renderer": "^16.2.0",
     "sinon": "^4.1.3",
     "sinon-stub-promise": "^4.0.0"
   },
   "scripts": {
     "dev": "concurrently  \"yarn react\" \"yarn dev-server\"",
-    "dev-server": "nodemon --watch server --exec babel-node server --presets env,stage-2",
+    "dev-server": "babel-node server --presets env,stage-2",
     "prestart": "yarn build",
     "start": "yarn server",
     "server": "babel-node server --presets env,stage-2",
