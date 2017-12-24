@@ -42,7 +42,7 @@ class Login extends Component {
 
               <form onSubmit={this.login}>
                 <div className="form-group">
-                  <input type="password" className="form-control" id="password" placeholder="Password"/>
+                  <input type="password" autoFocus className="form-control" id="password" placeholder="Password"/>
                 </div>
                 <button type="submit" className="btn btn-primary pull-right">Submit</button>
               </form>

@@ -24,7 +24,8 @@
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "react-scripts": "1.0.17",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-localstorage": "^0.4.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
