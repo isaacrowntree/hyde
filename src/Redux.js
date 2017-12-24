@@ -26,7 +26,7 @@ export const Reducer = (state = {authenticated: false, failed: false}, action) =
 
 let enhancer = compose();
 
-if (process.env.NODE_ENV !== 'test') {
+if (config.environment !== 'test') {
   enhancer = compose(
     persistState(),
   );
