@@ -46,7 +46,7 @@ class Editor extends Component {
         <div className="col-md-5 col-md-offset-2">
           <textarea className="Editor" value={this.state.fileContent} onChange={this.handleChange.bind(this)} />
           <br />
-          <button onClick={this.handleSubmit.bind(this)}>Publish</button>
+          <button onClick={this.handleSubmit.bind(this)} className="btn btn-primary">Publish</button>
         </div>
         <div className="col-md-5">
           <Interweave tagName="div" content={marked(this.state.fileContent) } />
