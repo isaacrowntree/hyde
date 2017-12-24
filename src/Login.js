@@ -11,8 +11,18 @@ class Login extends Component {
   }
 
   login(e) {
-    Store.dispatch({type: AUTHENTICATE});
+    Store.dispatch({type: AUTHENTICATE, payload: e.target.firstChild.firstChild.value});
     e.preventDefault();
+  }
+
+  get loginWarning() {
+    if (!this.props.failed) return null;
+
+    return (
+      <div className="alert alert-warning" role="alert">
+        Invalid password.
+      </div>
+    );
   }
 
   render() {
@@ -27,6 +37,9 @@ class Login extends Component {
           <br />
             <div className="jumbotron">
               <h1>Login</h1>
+
+              {this.loginWarning}
+
               <form onSubmit={this.login}>
                 <div className="form-group">
                   <input type="password" className="form-control" id="password" placeholder="Password"/>
