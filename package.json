@@ -4,7 +4,7 @@
   "description": "a content management system for Jekyll-based websites",
   "private": true,
   "engines": {
-    "node": "8.x"
+    "node": "9.x"
   },
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -20,9 +20,12 @@
     "node-dir": "^0.1.16",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-localstorage": "^0.4.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

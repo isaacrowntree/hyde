@@ -43,7 +43,7 @@ class Editor extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-5 col-md-offset-2">
+        <div className="col-md-5 offset-md-2">
           <textarea className="Editor" value={this.state.fileContent} onChange={this.handleChange.bind(this)} />
           <br />
           <button onClick={this.handleSubmit.bind(this)} className="btn btn-primary">Publish</button>

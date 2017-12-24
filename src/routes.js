@@ -1,11 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 
 import App from './App';
+import Login from './Login';
 
 const Routes = (props) => (
   <BrowserRouter>
-    <Route path="/" component={App} />
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route path="/login" component={Login} />
+    </Switch>
   </BrowserRouter>
 );
 

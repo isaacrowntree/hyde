@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ListItem from './ListItem.js';
-import Editor from './../Editor/Editor.js';
+import ListItem from './ListItem';
+import Editor from './../Editor/Editor';
 
 import { config } from './../../config';
 
