@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Editor from '../../../components/Editor/Editor';
+import Nav from '../../../components/Nav/Nav';
 
-test('Editors renders correctly', () => {
+test('Nav renders correctly', () => {
   const tree = renderer
-    .create(<Editor />)
+    .create(<Nav />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

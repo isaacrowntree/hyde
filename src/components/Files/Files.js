@@ -22,7 +22,7 @@ class Files extends Component {
   componentDidMount() {
     axios.get(`${config.url}/files`).then(res => {
       this.setState({ files: res.data });
-    });
+    }).catch(err => console.log(err.message));
   }
 
   edit(value) {

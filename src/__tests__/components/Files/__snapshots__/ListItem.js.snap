@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem renders correctly 1`] = `
+<li
+  className="list-group-item"
+  onClick={[Function]}
+>
+  
+</li>
+`;

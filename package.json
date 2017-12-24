@@ -30,6 +30,7 @@
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "babel-watch": "^2.0.7",
     "enzyme": "^3.2.0",
     "react-test-renderer": "^16.2.0",
     "sinon": "^4.1.3",
@@ -37,13 +38,13 @@
   },
   "scripts": {
     "dev": "concurrently  \"yarn react\" \"yarn dev-server\"",
-    "dev-server": "babel-node server --presets env,stage-2",
+    "dev-server": "babel-watch server --presets env,stage-2",
     "prestart": "yarn build",
     "start": "yarn server",
     "server": "babel-node server --presets env,stage-2",
     "react": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --testMatch=**/__tests__/**",
+    "test": "react-scripts test --env=jsdom --testMatch=**/__tests__/** --testPathIgnorePatterns=snap",
     "eject": "react-scripts eject"
   },
   "repository": {

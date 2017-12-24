@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Editor from '../../../components/Editor/Editor';
+import ListItem from '../../../components/Files/ListItem';
 
-test('Editors renders correctly', () => {
+test('ListItem renders correctly', () => {
   const tree = renderer
-    .create(<Editor />)
+    .create(<ListItem value="test" />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -1050,6 +1050,14 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.23.0, babel-types@^6.24
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
+babel-watch@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/babel-watch/-/babel-watch-2.0.7.tgz#584ad2af245ba96f88721213a9563631ba8fae48"
+  dependencies:
+    chokidar "^1.4.3"
+    commander "^2.9.0"
+    source-map-support "^0.4.0"
+
 babylon@^6.17.0, babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
@@ -1416,7 +1424,7 @@ child-process-promise@^2.2.1:
     node-version "^1.0.0"
     promise-polyfill "^6.0.1"
 
-chokidar@^1.6.0, chokidar@^1.6.1, chokidar@^1.7.0:
+chokidar@^1.4.3, chokidar@^1.6.0, chokidar@^1.6.1, chokidar@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
   dependencies:
@@ -1552,7 +1560,7 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2.12.x, commander@^2.11.0, commander@~2.12.1:
+commander@2.12.x, commander@^2.11.0, commander@^2.9.0, commander@~2.12.1:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
@@ -6114,7 +6122,7 @@ source-list-map@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.0.tgz#aaa47403f7b245a92fbc97ea08f250d6087ed085"
 
-source-map-support@^0.4.15:
+source-map-support@^0.4.0, source-map-support@^0.4.15:
   version "0.4.18"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
   dependencies:
