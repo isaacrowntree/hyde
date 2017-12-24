@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Store, AUTHENTICATE } from './Redux';
+import { connect } from 'react-redux';
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      redirectToReferrer: false
-    };
-
     this.login = this.login.bind(this);
   }
 
   login(e) {
-    this.setState({ redirectToReferrer: true });
+    Store.dispatch({type: AUTHENTICATE});
     e.preventDefault();
   }
 
   render() {
-    if (this.state.redirectToReferrer) {
-      return (<Redirect to='/true' />);
+    if (this.props.authenticated) {
+      return (<Redirect to="/" />);
     }
 
     return (
@@ -31,7 +29,6 @@ class Login extends Component {
               <h1>Login</h1>
               <form onSubmit={this.login}>
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
                   <input type="password" className="form-control" id="password" placeholder="Password"/>
                 </div>
                 <button type="submit" className="btn btn-primary pull-right">Submit</button>
@@ -44,5 +41,7 @@ class Login extends Component {
     );
   }
 }
+
+Login = connect(state => state)(Login);
 
 export default Login;
