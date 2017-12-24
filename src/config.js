@@ -1,12 +1,11 @@
-var port = process.env.PORT || 3001;
+var config = {};
 
-var config = {
-  port: port,
-  environment: process.env.NODE_ENV,
-  repository: process.env.GIT_REPO,
-  url: (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:' + port),
-  password: process.env.PASSWORD,
-  salt: process.env.SALT,
-};
+if (process.env.NODE_ENV === 'test') {
+  config = require('./config/test.js');
+} else if (process.env.NODE_ENV === 'development') {
+  config = require('./config/development.js');
+} else {
+  config = require('./config/production.js');
+}
 
-module.exports = { config: config };
+module.exports = config;

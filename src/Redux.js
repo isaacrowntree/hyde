@@ -6,9 +6,8 @@ import CryptoJS from 'crypto-js';
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOGOUT = 'LOGOUT';
 
-const comparePassword = (password) => {
-  const ciphertext = CryptoJS.AES.encrypt(password, config.salt);
-  const bytes = CryptoJS.AES.decrypt(ciphertext.toString(), config.salt);
+export const comparePassword = (password) => {
+  const bytes = CryptoJS.AES.decrypt(config.password, config.salt);
   return bytes.toString(CryptoJS.enc.Utf8) === password;
 };
 
@@ -25,9 +24,13 @@ export const Reducer = (state = {authenticated: false, failed: false}, action) =
   return state;
 };
 
-const enhancer = compose(
-  persistState(),
-);
+let enhancer = compose();
+
+if (process.env.NODE_ENV !== 'test') {
+  enhancer = compose(
+    persistState(),
+  );
+}
 
 export const Store = createStore(
   Reducer,
