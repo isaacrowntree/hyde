@@ -33,7 +33,6 @@ Milestone V.2:
 
 - ~login page~
 - password hash generator with salt (for Heroku)
-- auto-save to redux (and thus local-storage) every X seconds
 - environment variable setup for A) repo and B) passwords
 - Setup some kind of log message to frontend - saved, published, etc.
 - logout the user after X amount of time
@@ -43,6 +42,7 @@ Milestone V.2:
 Milestone V.3:
 - image support
 - upload support
+- auto-save to redux (and thus local-storage) every X seconds
 
 Milestone V.4:
 - MD file creation support
