@@ -22,9 +22,9 @@ Create a password and random salt:
 
 Heroku Config Variables:
 
-SALT = your salt
-PASSWORD = your new encrypted password
-GIT_REPO = your Jekyll repository
+REACT_APP_SALT = your salt
+REACT_APP_PASSWORD = your new encrypted password
+REACT_APP_GIT_REPO = your Jekyll repository
 
 In the root directory:
 
