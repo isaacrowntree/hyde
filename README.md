@@ -21,9 +21,11 @@ local development test Github repository and generated password and salt.
 
 Edit `.env.local` with your favourite editor and include:
 
-REACT_APP_SALT = your salt
-REACT_APP_PASSWORD = your new encrypted password
-REACT_APP_GIT_REPO = your Jekyll repository
+```
+REACT_APP_SALT=your salt
+REACT_APP_PASSWORD=your new encrypted password
+REACT_APP_GIT_REPO=your Jekyll repository
+```
 
 Run: `yarn dev`
 
@@ -34,10 +36,11 @@ In the local root directory:
 `node scripts/password.js --password=your_password --salt="your salt"`
 
 Heroku Config Variables:
-
-REACT_APP_SALT = your salt
-REACT_APP_PASSWORD = your new encrypted password
-REACT_APP_GIT_REPO = your Jekyll repository
+```
+REACT_APP_SALT=your salt
+REACT_APP_PASSWORD=your new encrypted password
+REACT_APP_GIT_REPO=your Jekyll repository
+```
 
 ```
 heroku create $APP_NAME --buildpack https://github.com/mars/create-react-app-buildpack
