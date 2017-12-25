@@ -12,7 +12,14 @@ _a content management system for Jekyll-based websites_
 
 In the root directory:
 
+Password first:
 `node scripts/password.js --password=your_password --salt="your salt"`
+Github repository URL:
+`node scripts/password.js --password=http://Github_username:Github_password@yourgithubrepository.git --salt="your salt"`
+
+*Important*: These passwords will show up in your BASH (or similar) history.
+Either delete the history or disable it for the purposes of running these commands
+if this is important to you.
 
 Take the new salt and password and copy .env.local - fill it in with your
 local development test Github repository and generated password and salt.
@@ -24,22 +31,27 @@ Edit `.env.local` with your favourite editor and include:
 ```
 REACT_APP_SALT=your salt
 REACT_APP_PASSWORD=your new encrypted password
-REACT_APP_GIT_REPO=your Jekyll repository
+REACT_APP_GIT_REPO=your encrypted Jekyll repo URL
 ```
 
 Run: `yarn dev`
 
 ## Run on Heroku
 
-In the local root directory:
-
+Password first:
 `node scripts/password.js --password=your_password --salt="your salt"`
+Github repository URL:
+`node scripts/password.js --password=http://Github_username:Github_password@yourgithubrepository.git --salt="your salt"`
+
+*Important*: These passwords will show up in your BASH (or similar) history.
+Either delete the history or disable it for the purposes of running these commands
+if this is important to you.
 
 Heroku Config Variables:
 ```
 REACT_APP_SALT=your salt
 REACT_APP_PASSWORD=your new encrypted password
-REACT_APP_GIT_REPO=your Jekyll repository
+REACT_APP_GIT_REPO=your Jekyll repo URL
 ```
 
 ```
