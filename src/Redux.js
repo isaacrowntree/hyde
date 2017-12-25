@@ -5,13 +5,12 @@ import persistState from 'redux-localstorage';
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOGOUT = 'LOGOUT';
 export const SUCCESS = 'SUCCESS';
-export const NO_RESPONSE = 'NO_RESPONSE';
-export const NOT_AVAILABLE = 'NOT_AVAILABLE';
+export const ERROR = 'ERROR';
 
 export const Reducer =
     (state = {
       auth: {authenticated: false, failed: false},
-      publish: {success: false, noResponse: false, notAvailable: false}
+      msg: {success: '', error: ''}
     }, action) =>
 {
   if (action.type === AUTHENTICATE) {
@@ -24,13 +23,10 @@ export const Reducer =
     return Object.assign({}, state, {auth: {authenticated: false}});
   }
   if (action.type === SUCCESS) {
-    return Object.assign({}, state, {publish: {success: true, noResponse: false, notAvailable: false}});
+    return Object.assign({}, state, {msg: {success: action.payload, error: ''}});
   }
-  if (action.type === NO_RESPONSE) {
-    return Object.assign({}, state, {publish: {success: false, noResponse: true, notAvailable: false}});
-  }
-  if (action.type === NOT_AVAILABLE) {
-    return Object.assign({}, state, {publish: {success: false, noResponse: false, notAvailable: true}});
+  if (action.type === ERROR) {
+    return Object.assign({}, state, {msg: {success: '', error: action.payload}});
   }
   return state;
 };
@@ -39,7 +35,7 @@ let enhancer = compose();
 
 if (config.environment !== 'test') {
   enhancer = compose(
-    persistState(),
+    persistState('auth'),
   );
 }
 
