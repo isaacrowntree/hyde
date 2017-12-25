@@ -32,6 +32,8 @@ Edit `.env.local` with your favourite editor and include:
 REACT_APP_SALT=your salt
 REACT_APP_PASSWORD=your new encrypted password
 REACT_APP_GIT_REPO=your encrypted Jekyll repo URL
+REACT_APP_NAME=your actual name - required by Git
+REACT_APP_EMAIL=your actual email - required by Git
 ```
 
 Run: `yarn dev`
@@ -52,6 +54,8 @@ Heroku Config Variables:
 REACT_APP_SALT=your salt
 REACT_APP_PASSWORD=your new encrypted password
 REACT_APP_GIT_REPO=your Jekyll repo URL
+REACT_APP_NAME=your actual name - required by Git
+REACT_APP_EMAIL=your actual email - required by Git
 ```
 
 ```

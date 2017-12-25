@@ -12,6 +12,8 @@ var password = bytes.toString(CryptoJS.enc.Utf8);
 var port = process.env.PORT || 3001;
 
 var config = {
+  name: process.env.REACT_APP_NAME,
+  email: process.env.REACT_APP_EMAIL,
   port: port,
   environment: process.env.NODE_ENV,
   repository: gitRepoUrl,
