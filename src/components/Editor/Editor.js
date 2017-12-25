@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import marked from 'marked';
 import Interweave from 'interweave';
-import { Store, SUCCESS, NO_RESPONSE, NOT_AVAILABLE } from '../../Redux';
+import { Store, SUCCESS, ERROR } from '../../Redux';
 import './Editor.css';
 
 import { config } from './../../config';
@@ -39,15 +39,10 @@ class Editor extends Component {
     axios.post(`${config.url}/save`, { file: this.state.file, data: this.state.fileContent })
       .then(res => {
         this.setState({ saved: true });
-        Store.dispatch({ type: SUCCESS });
+        Store.dispatch({ type: SUCCESS, payload: "Saved successfully!" });
       })
       .catch(error => {
-        if (!error.response) {
-          Store.dispatch({ type: NO_RESPONSE });
-        }
-        else if (error.status === 503) {
-          Store.dispatch({ type: NOT_AVAILABLE });
-        }
+        Store.dispatch({ type: ERROR, payload: error.message });
       });
   }
 

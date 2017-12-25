@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Files from './components/Files/Files';
 import Nav from './components/Nav/Nav';
-import Message from './components/Status/Message';
+import Status from './components/Status/Status';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
       return (
         <div>
           <Nav />
-          <Message store={this.props} />
+          <Status />
           <Files />
         </div>
       );
