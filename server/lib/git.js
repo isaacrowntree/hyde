@@ -4,7 +4,7 @@ import { exec } from 'child-process-promise';
 const _commands = {
   clone: 'git clone',
   pull:  'git pull',
-  commitAndPush: 'git add . && git commit -m "Hyde Commit" && git push'
+  commitAndPush: 'git add . && git commit -m "Hyde Update <filename>" && git push'
 };
 
 class Git {
@@ -16,8 +16,8 @@ class Git {
     return exec(`cd ${path} && ${_commands.pull}`);
   }
 
-  commitAndPush(path) {
-    return exec(`cd ${path} && ${_commands.commitAndPush}`);
+  commitAndPush(file, path) {
+    return exec(`cd ${path} && ${_commands.commitAndPush.replace('<filename>', file)}`);
   }
 }
 
