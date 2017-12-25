@@ -77,7 +77,10 @@ Milestone V.2:
 - Setup some kind of log message to frontend - saved, published, etc.
 - logout the user after X amount of time
 - testing redux implementation
-- jest snapshots
+- create a JS lib for crypto
+- move config to es6?
+- create a JS lib for the splitter function
+- ~jest snapshots~
 
 Milestone V.3:
 - image support
