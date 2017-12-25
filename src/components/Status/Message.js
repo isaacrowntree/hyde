@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
+import './Message.css';
 
 class Message extends Component {
 
 	render () {
-		if (!this.props.store.publish) {
-			return false;
-		}
-		if (this.props.store.publish.success) {
-			return (
-				<p className="alert alert-success">Publish successful!</p>
-			);
-		}
-		else if (this.props.store.publish.noResponse) {
-			return (
-				<p className="alert alert-danger">No response from server.</p>
-			);
-		}
-		else if (this.props.store.publish.notAvailable) {
-			return (
-				<p className="alert alert-danger">Server unavailable.</p>
-			);
+		if (this.props.store.publish) {
+			if (this.props.store.publish.success) {
+				return (
+					<p className="alert alert-success">Publish successful!</p>
+				);
+			}
+			else if (this.props.store.publish.noResponse) {
+				return (
+					<p className="alert alert-danger">No response from server.</p>
+				);
+			}
+			else if (this.props.store.publish.notAvailable) {
+				return (
+					<p className="alert alert-danger">Server unavailable.</p>
+				);
+			}
 		}
 		else {
 			// No message
