@@ -12,8 +12,8 @@ const _commands = {
 
 class Git {
   clone(url, path) {
-    exec(`cd ${path} && ${_commands.email.replace('<email>', config.email)}`);
-    exec(`cd ${path} && ${_commands.name.replace('<name>', config.name)}`);
+    exec(`${_commands.email.replace('<email>', config.email)}`);
+    exec(`${_commands.name.replace('<name>', config.name)}`);
     return exec(`${_commands.clone} ${url} ${path}`);
   }
 
