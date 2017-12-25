@@ -6,6 +6,7 @@
 # testing
 /coverage
 /tmp
+.env.local
 
 # production
 /build

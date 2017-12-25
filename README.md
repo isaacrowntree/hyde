@@ -12,11 +12,24 @@ _a content management system for Jekyll-based websites_
 
 In the root directory:
 
-`yarn dev`
+`node scripts/password.js --password=your_password --salt="your salt"`
+
+Take the new salt and password and copy .env.local - fill it in with your
+local development test Github repository and generated password and salt.
+
+`cp .env.local.sample .env.local`
+
+Edit `.env.local` with your favourite editor and include:
+
+REACT_APP_SALT = your salt
+REACT_APP_PASSWORD = your new encrypted password
+REACT_APP_GIT_REPO = your Jekyll repository
+
+Run: `yarn dev`
 
 ## Run on Heroku
 
-Create a password and random salt:
+In the local root directory:
 
 `node scripts/password.js --password=your_password --salt="your salt"`
 
@@ -25,8 +38,6 @@ Heroku Config Variables:
 REACT_APP_SALT = your salt
 REACT_APP_PASSWORD = your new encrypted password
 REACT_APP_GIT_REPO = your Jekyll repository
-
-In the root directory:
 
 ```
 heroku create $APP_NAME --buildpack https://github.com/mars/create-react-app-buildpack
@@ -48,7 +59,6 @@ Milestone V.2:
 - logout the user after X amount of time
 - testing redux implementation
 - jest snapshots
-- run locally without login
 
 Milestone V.3:
 - image support
