@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
-    if (this.props.auth.authenticated) {
+    if (this.props.authenticated) {
       return (
         <div>
           <Nav />
@@ -21,6 +21,6 @@ class App extends Component {
   }
 }
 
-App = connect(state => state)(App);
+App = connect(state => state.auth)(App);
 
 export default App;
