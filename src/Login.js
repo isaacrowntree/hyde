@@ -26,7 +26,7 @@ class Login extends Component {
   }
 
   render() {
-    if (this.props.auth.authenticated) {
+    if (this.props.authenticated) {
       return (<Redirect to="/" />);
     }
 
@@ -55,6 +55,6 @@ class Login extends Component {
   }
 }
 
-Login = connect(state => state)(Login);
+Login = connect(state => state.auth)(Login);
 
 export default Login;

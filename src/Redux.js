@@ -19,6 +19,7 @@ export const Reducer =
       msg: {success: '', error: ''}
     }, action) =>
 {
+  // Authentication actions
   if (action.type === AUTHENTICATE) {
     if (!comparePassword(action.payload)) {
       return Object.assign({}, state, {auth: {authenticated: false, failed: true}});
@@ -28,12 +29,15 @@ export const Reducer =
   if (action.type === LOGOUT) {
     return Object.assign({}, state, {auth: {authenticated: false}});
   }
+
+  // App notifications
   if (action.type === SUCCESS) {
     return Object.assign({}, state, {msg: {success: action.payload, error: ''}});
   }
   if (action.type === ERROR) {
     return Object.assign({}, state, {msg: {success: '', error: action.payload}});
   }
+
   return state;
 };
 
