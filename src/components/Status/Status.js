@@ -23,8 +23,10 @@ class Status extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { success, error } = state.msg;
-  return { success, error };
+  if (state.msg) {
+    const { success, error } = state.msg;
+    return { success, error };
+  }
 };
 
 Status = connect(mapStateToProps)(Status);
