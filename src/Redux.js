@@ -24,7 +24,7 @@ export const Reducer = (state = defaultState, action) => {
   switch (type) {
     // Authentication actions
     case AUTHENTICATE:
-      if (action.payload !== config.password) {
+      if (payload !== config.password) {
         return Object.assign({}, state, {auth: {authenticated: false, failed: true}});
       }
       return Object.assign({}, state, {auth: {authenticated: true, failed: false}});
