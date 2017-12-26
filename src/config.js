@@ -1,5 +1,5 @@
 // .env.local is auto-loaded by react-scripts in ./src
-// in ./server config is used as well but we have to dotenv manually
+// in ./server it's not auto-loaded dotenv is manually run here
 if (process.env.NODE_ENV !== 'production' && !process.env.REACT_APP_GIT_REPO) {
   require('dotenv').config({path: '.env.local'});
 }
