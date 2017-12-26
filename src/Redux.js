@@ -7,32 +7,37 @@ export const LOGOUT = 'LOGOUT';
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
 
-export const Reducer =
-    (state = {
-      auth: {authenticated: false, failed: false},
-      msg: {success: '', error: ''}
-    }, action) =>
-{
-  // Authentication actions
-  if (action.type === AUTHENTICATE) {
-    if (action.payload !== config.password) {
-      return Object.assign({}, state, {authenticated: false, failed: true});
-    }
-    return Object.assign({}, state, {auth: {authenticated: true, failed: false}});
-  }
-  if (action.type === LOGOUT) {
-    return Object.assign({}, state, {auth: {authenticated: false}});
-  }
+const defaultState = {
+  auth: {
+    authenticated: false,
+    failed: false,
+  },
+  msg: {
+    success: '',
+    error: '',
+  },
+};
 
-  // App notifications
-  if (action.type === SUCCESS) {
-    return Object.assign({}, state, {msg: {success: action.payload, error: ''}});
-  }
-  if (action.type === ERROR) {
-    return Object.assign({}, state, {msg: {success: '', error: action.payload}});
-  }
+export const Reducer = (state = defaultState, action) => {
+  const { type, payload } = action;
 
-  return state;
+  switch (type) {
+    // Authentication actions
+    case AUTHENTICATE:
+      if (action.payload !== config.password) {
+        return Object.assign({}, state, {auth: {authenticated: false, failed: true}});
+      }
+      return Object.assign({}, state, {auth: {authenticated: true, failed: false}});
+    case LOGOUT:
+      return Object.assign({}, state, {auth: {authenticated: false}});
+    // App notifications
+    case SUCCESS:
+      return Object.assign({}, state, {msg: {success: payload, error: ''}});
+    case ERROR:
+      return Object.assign({}, state, {msg: {success: '', error: payload}});
+    default:
+      return state;
+  }
 };
 
 let enhancer = compose();
