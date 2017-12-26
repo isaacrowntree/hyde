@@ -13,8 +13,8 @@ const defaultState = {
     failed: false,
   },
   msg: {
-    success: '',
-    error: '',
+    success: undefined,
+    error: undefined,
   },
 };
 
@@ -32,9 +32,9 @@ export const Reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {auth: {authenticated: false}});
     // App notifications
     case SUCCESS:
-      return Object.assign({}, state, {msg: {success: payload, error: ''}});
+      return Object.assign({}, state, {msg: {success: payload, error: undefined}});
     case ERROR:
-      return Object.assign({}, state, {msg: {success: '', error: payload}});
+      return Object.assign({}, state, {msg: {success: undefined, error: payload}});
     default:
       return state;
   }
