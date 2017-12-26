@@ -1,4 +1,5 @@
-// Dotenv doesn't auto run for the express server
+// .env.local is auto-loaded by react-scripts
+// The express server has to make it happen manually
 if (process.env.NODE_ENV !== 'production' && !process.env.REACT_APP_GIT_REPO) {
   require('dotenv').config({path: '.env.local'});
 }
