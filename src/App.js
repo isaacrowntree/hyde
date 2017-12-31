@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Files from './components/Files/Files';
 import Nav from './components/Nav/Nav';
+import Status from './components/Status/Status';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
       return (
         <div>
           <Nav />
+          <Status />
           <Files />
         </div>
       );
@@ -19,6 +21,10 @@ class App extends Component {
   }
 }
 
-App = connect(state => state)(App);
+const mapStateToProps = (state) => {
+  return { authenticated: state.auth.authenticated };
+};
+
+App = connect(mapStateToProps)(App);
 
 export default App;

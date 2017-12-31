@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import marked from 'marked';
 import Interweave from 'interweave';
+import { Store, SUCCESS, ERROR } from '../../Redux';
 import './Editor.css';
 
 import { config } from './../../config';
@@ -14,6 +15,7 @@ class Editor extends Component {
       fileContent: '',
       file: '',
       saved: false,
+      publishing: false
     };
   }
 
@@ -35,18 +37,32 @@ class Editor extends Component {
   }
 
   handleSubmit(event) {
-    axios.post(`${config.url}/save`, { file: this.state.file, data: this.state.fileContent }).then(res => {
-      this.setState({ saved: true });
-    });
+    this.setState({ publishing: true });
+    axios.post(`${config.url}/save`, { file: this.state.file, data: this.state.fileContent })
+      .then(res => {
+        this.setState({ saved: true, publishing: false });
+        Store.dispatch({ type: SUCCESS, payload: "Saved successfully!" });
+      })
+      .catch(error => {
+        this.setState({ publishing: false });
+        Store.dispatch({ type: ERROR, payload: error.message });
+      });
   }
 
   render() {
+    const isPublishing = this.state.publishing;
+
     return (
       <div className="row">
         <div className="col-md-5 offset-md-2">
           <textarea className="Editor" value={this.state.fileContent} onChange={this.handleChange.bind(this)} />
           <br />
-          <button onClick={this.handleSubmit.bind(this)} className="btn btn-primary">Publish</button>
+          <button
+            onClick={this.handleSubmit.bind(this)}
+            className="btn btn-primary"
+            disabled={ isPublishing }
+            >{ isPublishing ? "Publishing...": "Publish" }
+          </button>
         </div>
         <div className="col-md-5">
           <Interweave tagName="div" content={marked(this.state.fileContent) } />
