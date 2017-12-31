@@ -34,7 +34,7 @@ class Files extends Component {
     var counter = 0;
     for (var value of this.state.files) {
       counter++;
-      if (value.match(/\.md$/)) {
+      if (value.match(/\.md|\.yml$/)) {
         rows.push(<ListItem onItemClick={this.edit} key={counter} value={value} />);
       }
     }

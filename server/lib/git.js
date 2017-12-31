@@ -1,14 +1,19 @@
 'use strict';
 import { exec } from 'child-process-promise';
+import { config } from './../../src/config';
 
 const _commands = {
+  email: 'git config --global user.email "<email>"',
+  name: 'git config --global user.name "<name>"',
   clone: 'git clone',
-  pull:  'git pull',
-  commitAndPush: 'git add . && git commit -m "Hyde Commit" && git push'
+  pull: 'git pull',
+  commitAndPush: 'git add . && git commit -m "Hyde Update <filename>" && git push'
 };
 
 class Git {
   clone(url, path) {
+    exec(`${_commands.email.replace('<email>', config.email)}`);
+    exec(`${_commands.name.replace('<name>', config.name)}`);
     return exec(`${_commands.clone} ${url} ${path}`);
   }
 
@@ -16,8 +21,8 @@ class Git {
     return exec(`cd ${path} && ${_commands.pull}`);
   }
 
-  commitAndPush(path) {
-    return exec(`cd ${path} && ${_commands.commitAndPush}`);
+  commitAndPush(file, path) {
+    return exec(`cd ${path} && ${_commands.commitAndPush.replace('<filename>', file)}`);
   }
 }
 

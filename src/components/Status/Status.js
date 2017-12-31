@@ -4,25 +4,31 @@ import { connect } from 'react-redux';
 class Status extends Component {
 
   render () {
-    const { success = '', error = '' } = this.props;
+    const { success, error } = this.props;
 
-    if (success.length > 0) {
+    if (success) {
       return (
         <p className="alert alert-success">{success}</p>
       );
     }
-    else if (error.length > 0) {
+
+    if (error) {
       return (
         <p className="alert alert-danger">{error}</p>
       );
     }
-    else {
-      // No message
-      return false;
-    }
+
+    return false;
   }
 }
 
-Status = connect(state => state.msg)(Status);
+const mapStateToProps = (state) => {
+  if (state.msg) {
+    const { success, error } = state.msg;
+    return { success, error };
+  }
+};
+
+Status = connect(mapStateToProps)(Status);
 
 export default Status;

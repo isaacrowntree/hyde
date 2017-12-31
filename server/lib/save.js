@@ -3,8 +3,16 @@ import fs from 'fs';
 import git from './git';
 import { config } from './../../src/config';
 
-const commitAndPush = () => (
-  new git().commitAndPush(_path(config.repository))
+const format = (val) => {
+  let splitter = '\\';
+  if (val.split(splitter).length === 1) {
+    splitter = '/';
+  }
+  return val.split(splitter).slice(2).join(splitter);
+};
+
+const commitAndPush = (file) => (
+  new git().commitAndPush(file, _path(config.repository))
 );
 
 const save = (file, data, res, save = commitAndPush) => {
@@ -13,7 +21,7 @@ const save = (file, data, res, save = commitAndPush) => {
 
   fs.writeFile(file, data, (err, data) => {
     if (err) throw err;
-    save().then(() => (res.send(true)));
+    save(format(file)).then(() => (res.send(true)));
   });
 };
 

@@ -1,17 +1,25 @@
-// Dotenv doesn't auto run for the express server
+// .env.local is auto-loaded by react-scripts in ./src
+// in ./server it's not auto-loaded dotenv is manually run here
 if (process.env.NODE_ENV !== 'production' && !process.env.REACT_APP_GIT_REPO) {
   require('dotenv').config({path: '.env.local'});
 }
 
+var CryptoJS = require('crypto-js');
+var bytes = CryptoJS.AES.decrypt(process.env.REACT_APP_GIT_REPO, process.env.REACT_APP_SALT);
+var gitRepoUrl = bytes.toString(CryptoJS.enc.Utf8);
+bytes = CryptoJS.AES.decrypt(process.env.REACT_APP_PASSWORD, process.env.REACT_APP_SALT);
+var password = bytes.toString(CryptoJS.enc.Utf8);
+
 var port = process.env.PORT || 3001;
 
 var config = {
+  name: process.env.REACT_APP_NAME,
+  email: process.env.REACT_APP_EMAIL,
   port: port,
   environment: process.env.NODE_ENV,
-  repository: process.env.REACT_APP_GIT_REPO,
+  repository: gitRepoUrl,
   url: (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:' + port),
-  password: process.env.REACT_APP_PASSWORD,
-  salt: process.env.REACT_APP_SALT,
+  password: password,
 };
 
 module.exports = { config: config };
